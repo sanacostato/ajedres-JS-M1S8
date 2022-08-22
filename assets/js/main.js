@@ -52,10 +52,16 @@ function buscar(){
         console.log("entro a la funcion buscar");
         console.log("El usuario esta buscando:",termino_busqueda);
         const resultado = piezas.find (pieza => pieza.nombre.toLocaleLowerCase() == termino_busqueda.toLocaleLowerCase());
-        resultadoBusqueda.innerHTML = resultado.movimiento;
-        // resultadoImagen.src = resultado.imagen;
-        resultadoImagen.setAttribute("src",resultado.imagen);
-
+       
+        if(resultado == undefined){ // es lo mismo sin el unde.. y se cambiaria lo del else al if 
+            alert("no se encontro la pieza  ")
+            resultadoBusqueda.innerHTML = "No hay resultados";
+            resultadoImagen.src = "assets/images/logo.png";
+        } else {
+            resultadoBusqueda.innerHTML = resultado.movimiento;
+            // resultadoImagen.src = resultado.imagen;
+            resultadoImagen.setAttribute("src",resultado.imagen);
+        }
     }
 }
 textoBusqueda.addEventListener("keypress", function(event){
